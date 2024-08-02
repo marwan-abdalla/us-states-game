@@ -41,10 +41,7 @@ def main():
             prompt="What's another state's name?").title()
 
         if answer_state.lower() == "exit":
-            missing_states = []
-            for state in states:
-                if state not in guessed_states:
-                    missing_states.append(state)
+            missing_states = [state for state in states if state not in guessed_states]
             new_data = pd.DataFrame(missing_states)
             new_data.to_csv("states_not_guessed.csv")
             break
